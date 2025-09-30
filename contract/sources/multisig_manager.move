@@ -67,6 +67,8 @@ module mm_addr::multisig_manager {
         let caller_auth_key = bcs::to_bytes(&caller_addr);
         let derived_auth_key = derive_ed25519_auth_key(caller_public_key);
 
+        assert!(public_keys.length() >= 2, 123);
+
         assert!(derived_auth_key == caller_auth_key, 6);
 
         // Now, we need to validate it's one of the public keys
